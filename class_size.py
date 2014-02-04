@@ -51,8 +51,7 @@ def UnbiasPmf(pmf, name):
      Returns:
        Pmf object
     """
-    return BiasPmf(pmf, name, invert=True)
-
+    return BiasPmf(pmf, name, invert=True) 
 
 def ClassSizes():
 
@@ -85,14 +84,13 @@ def ClassSizes():
     print 'var', unbiased_pmf.Var()
 
     # plot the Pmfs
-    thinkplot.Pmfs([pmf, biased_pmf])
+    thinkplot.Cdfs([thinkstats2.MakeCdfFromPmf(biased_pmf), 
+        thinkstats2.MakeCdfFromPmf(unbiased_pmf)])
     thinkplot.Show(xlabel='Class size',
-                   ylabel='PMF')
+                   ylabel='CDF')
     
- 
 def main():
     ClassSizes()
-
 
 if __name__ == '__main__':
     main()
