@@ -42,7 +42,7 @@ def BinData(data, low, high, n):
 
 
 def main():
-    filename = 'mystery0.dat'
+    filename = 'mystery7.dat'
     data = read_file(filename)
 
     pmf = thinkstats2.MakePmfFromList(data)

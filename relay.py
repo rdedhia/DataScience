@@ -92,11 +92,25 @@ def main():
     # speeds = BinData(speeds, 3, 12, 100)
 
     pmf = thinkstats2.MakePmfFromList(speeds, 'speeds')
+    pdf = thinkstats2.EstimatedPdf(speeds)
+    low, high = min(speeds), max(speeds)
+    xs = numpy.linspace(low, high, 101)
+    kde_pdf = pdf.MakePmf(xs)
 
+    thinkplot.SubPlot(2, 1, 1)
     thinkplot.Hist(pmf)
-    thinkplot.Show(title='PMF of running speed',
-               xlabel='speed (mph)',
-               ylabel='probability')
+    thinkplot.Config(title='Binned Hist')
+
+    thinkplot.SubPlot(2, 1, 2)
+    thinkplot.Pmf(kde_pdf)
+    thinkplot.Config(title='KDE PDF')
+
+    thinkplot.Show()
+
+    #thinkplot.Hist(pmf)
+    #thinkplot.Show(title='PMF of running speed',
+               #xlabel='speed (mph)',
+               #ylabel='probability')
 
 
 if __name__ == '__main__':
